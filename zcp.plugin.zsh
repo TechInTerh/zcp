@@ -1,11 +1,11 @@
 zcp() {
 
-    local SIZE_SOURCE_KILOBYTE=$(du -S -b "$1" | cut -f1)
+    local SIZE_SOURCE=$(du -S -b "$1" | cut -f1)
     local SOURCES=${@:1:#-1} # Remove the last argument
     local TARGET=${@:$#}
     local NUMBER_FILES=4 #$(ls -1 "$1" | wc -l)
     count=0
-    echo "SIZE_SOURCE_KILOBYTE: $SIZE_SOURCE_KILOBYTE"
+    echo "SIZE_SOURCE: $SIZE_SOURCE"
     echo "NUMBER_FILES: $NUMBER_FILES"
     echo "SOURCES: $SOURCES"
     echo "TARGET: $TARGET"
@@ -14,8 +14,7 @@ zcp() {
         if (match($0, /write/)) {
             print $NF
         }
-        sleep 1
-    }'| tqdm --update --null --unit_scale --unit-divisor=1024  --unit=B --total $SIZE_SOURCE_KILOBYTE 
+    }'| tqdm --update --null --unit_scale --unit-divisor=1024  --unit=B --total $SIZE_SOURCE 
 }
 
 RESOURCES="test_resources/"
