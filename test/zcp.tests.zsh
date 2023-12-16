@@ -52,6 +52,13 @@ test_huge_files() {
     run_test $SOURCE $TARGET
 }
 
+test_lot_of_files() {
+    SOURCE=$TEST_RESOURCES"lot_of_files/"
+    TARGET=$TEST_RESOURCES"lot_of_files_target/"
+    #In blue
+    run_test $SOURCE $TARGET
+}
+
 prepare_folder() {
     mkdir -p "$TEST_RESOURCES"
 }
