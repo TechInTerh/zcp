@@ -13,6 +13,3 @@ zcp() {
         }
     }'| tqdm --update --null --unit_scale --unit-divisor=1024  --unit=B --total $SIZE_SOURCE 
 }
-
-zcp $@
-

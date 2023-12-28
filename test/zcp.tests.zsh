@@ -1,6 +1,5 @@
 #! /usr/bin/env zsh
 
-ZCP="zsh zcp.plugin.zsh"
 TEST_RESOURCES="test_resources/"
 
 #Plot time comparison between zcp and cp
@@ -25,7 +24,7 @@ run_test() {
 
     rm -fr $TARGET
     START_ZCP=$(date +%s.%N)
-    zsh zcp.plugin.zsh $SOURCE $TARGET
+    zsh zcp_copy.zsh $SOURCE $TARGET
     END_ZCP=$(date +%s.%N)
     TIME_ZCP=$((END_ZCP-START_ZCP))
     rm -fr $TARGET
@@ -64,4 +63,6 @@ main() {
 
 }
 
+cp ./zcp.plugin.zsh zcp_copy.zsh
+echo 'zcp $@' >> zcp_copy.zsh
 main

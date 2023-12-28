@@ -27,8 +27,8 @@ write_huge_files() {
     mkdir -p $SOURCE
     #In blue
     echo -e "\e[34m Writing Huge Files \e[0m"
-    write_random_file $SOURCE"file1" 1000
-    write_random_file $SOURCE"file2" 2000
+    write_random_file $SOURCE"file1" 500
+    write_random_file $SOURCE"file2" 1000
 }
 
 main() {
