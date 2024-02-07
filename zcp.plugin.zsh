@@ -7,7 +7,6 @@ zcp() {
     #local NUMBER_FILES=$(ls -1 "$1" | wc -l)
     count=0
     strace -q \cp -r $@ 2>&1 | awk '{
-        #Check if "write in the line
         if (match($0, /write/)) {
             print $NF
         }
