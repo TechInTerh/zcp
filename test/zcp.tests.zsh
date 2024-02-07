@@ -9,8 +9,6 @@ plot_comparison() {
     NAME=$3
 
     #Display a nice comparison 
-    # In green
-    echo -e "\e[32m $NAME \e[0m"
     #In Yellow
     echo -e "\e[33m zcp: $TIME_ZCP s \e[0m"
     #In Red
@@ -22,6 +20,8 @@ run_test() {
     SOURCE=$1
     TARGET=$2
 
+    # In green
+    echo -e "\e[32m $SOURCE \e[0m"
     rm -fr $TARGET
     START_ZCP=$(date +%s.%N)
     zsh zcp_copy.zsh $SOURCE $TARGET
@@ -35,7 +35,12 @@ run_test() {
     plot_comparison $TIME_ZCP $TIME_CP $SOURCE
 }
 
-
+test_single_file() {
+    SOURCE=$TEST_RESOURCES"single_file/"
+    TARGET=$TEST_RESOURCES"single_file_target/"
+    #In blue
+    run_test $SOURCE $TARGET
+}
 test_few_files() {
     SOURCE=$TEST_RESOURCES"few_files/"
     TARGET=$TEST_RESOURCES"few_files_target/"
@@ -59,14 +64,12 @@ test_lot_of_files() {
     run_test $SOURCE $TARGET
 }
 
-prepare_folder() {
-    mkdir -p "$TEST_RESOURCES"
-}
-
 main() {
-    prepare_folder
-    test_few_files
-    test_huge_files
+    #test_single_file
+    #test_few_files
+    #test_huge_files
+    
+    test_lot_of_files
 
 }
 

@@ -7,6 +7,14 @@ write_random_file() {
     rm -fr $1
     dd if=/dev/urandom of=$1 bs=1M count=$2 > /dev/null 2>&1
 }
+write_single_file() {
+    SOURCE=$TEST_RESOURCES"single_file/"
+    rm -fr $SOURCE
+    mkdir -p $SOURCE
+    #In blue
+    echo -e "\e[34m Writing Single File \e[0m"
+    write_random_file $SOURCE"file1" 1
+}
 
 write_few_files() {
 
@@ -69,6 +77,7 @@ main() {
     write_few_files
     write_huge_files
     write_lot_of_files
+    write_single_file
     touch "$TEST_RESOURCES"test_check.txt
 }
 
